@@ -26,14 +26,16 @@ use Harranali\Tfserving\DataTypes;
 
 Route::get('/', function () {
     $host = '192.168.99.100:9000';
-    $modelName = 'simple';
+    $modelName = 'my_model';
     $modelVersion = 1;
+    $input = [12345];
+
     $tfsClient = new Client($host, $modelName, $modelVersion);
 
     $predictmessage = new PredictMessage;
     $predictmessage->setInputTensorName('a')
                    ->setInputTensorType(DataTypes::DT_INT32)
-                   ->setInputTensorValue([1]);
+                   ->setInputTensorValue($input);
 
     $response = $tfsClient->predict($predictmessage);
     return $response;
