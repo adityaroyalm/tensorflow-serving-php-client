@@ -17,32 +17,50 @@ composer require harranali/tensorflow-serving-php-client
 ```
 
 ## Usage
-**First ** import the following classes:
 
+#### an example in laravel
+```php
+use Harranali\Tfserving\Client;
+use Harranali\Tfserving\PredictMessage;
+use Harranali\Tfserving\DataTypes;
+
+Route::get('/', function () {
+    $host = '192.168.99.100:9000';
+    $modelName = 'simple';
+    $modelVersion = 1;
+    $tfsClient = new Client($host, $modelName, $modelVersion);
+
+    $predictmessage = new PredictMessage;
+    $predictmessage->setInputTensorName('a')
+                   ->setInputTensorType(DataTypes::DT_INT32)
+                   ->setInputTensorValue([1]);
+
+    $response = $tfsClient->predict($predictmessage);
+    return $response;
+});
+```
+
+- **First** import the following classes:
 ```php
 use Harranali\Tfserving\Client;
 use Harranali\Tfserving\PredictMessage;
 use Harranali\Tfserving\DataTypes;
 ```
-
-** Second ** initiate the client by providing the parameters `host:port`, `modelName`, and `modelVersion`
-
+- **Second** initiate the client by providing the parameters `host:port`, `modelName`, and `modelVersion`
 ```php
 $hostPort = 'localhost:9000';
 $modelName = 'simple';
 $modelVersion = 1;
 $tfsClient = new Client($hostPort, $modelName, $modelVersion);
 ```
-** Third ** prepare the `predict` request message object
+- **Third** prepare the `predict` request message object
 ```php
 $predictmessage = new PredictMessage;
 $predictmessage->setInputTensorName('a')
                ->setInputTensorType(DataTypes::DT_INT32)
                ->setInputTensorValue([1]);
 ```
-
 here is a list of all data types available in the class `DataTypes`
-
 ```php
 DataTypes::DT_FLOAT
 DataTypes::DT_DOUBLE
@@ -85,39 +103,12 @@ DataTypes::DT_COMPLEX128_REF
 DataTypes::DT_HALF_REF
 DataTypes::DT_RESOURCE_REF
 ```
-** Fourth ** Making the call to the server
+- **Fourth** Making the call to the server
 ```php
 $response = $tfsClient->predict($predictmessage);
 return $response;
 ```
-
-## a laravel snippet for usage 
-
-```php
-use Harranali\Tfserving\Client;
-use Harranali\Tfserving\PredictMessage;
-use Harranali\Tfserving\DataTypes;
-
-Route::get('/', function () {
-    $host = '192.168.99.100:9000';
-    $modelName = 'simple';
-    $modelVersion = 1;
-    $tfsClient = new Client($host, $modelName, $modelVersion);
-
-    $predictmessage = new PredictMessage;
-    $predictmessage->setInputTensorName('a')
-                   ->setInputTensorType(DataTypes::DT_INT32)
-                   ->setInputTensorValue([1]);
-
-    $response = $tfsClient->predict($predictmessage);
-    return $response;
-});
-```
-
 ## Contributing
 all kind of contributions are welcomed.
-
-
 ## License
-
 `tensorflow-serving-php-client` is licensed under the [MIT license](https://opensource.org/licenses/MIT).
