@@ -1,0 +1,13 @@
+{
+    "name": "harranali/tensorflow-serving-php-client",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Harran Modathir",
+            "email": "harran.m@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
