@@ -1,7 +1,7 @@
 
 ## tensorflow-serving-php-client
 
-`tensorflow-serving-php-client` is a framework agnostic library helps with calling machine learning models served by [tensorflow serving](https://github.com/tensorflow/serving)  from your `php application`.
+`tensorflow-serving-php-client` is a framework agnostic library helps you with calling machine learning models served by [tensorflow serving](https://github.com/tensorflow/serving)  from your `php application`. the library is inspired by [tfserving-python-predict-client](https://github.com/epigramai/tfserving-python-predict-client) python client.
 
 
 ## Requirements
