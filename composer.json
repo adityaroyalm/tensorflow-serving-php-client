@@ -8,6 +8,13 @@
             "email": "harran.m@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Harranali\\Tfserving\\": "package/harranali/tensorflow-serving-php-client/src/ClientCode/",
+            "GPBMetadata\\": "package/harranali/tensorflow-serving-php-client/src/PBGenerated/GPBMetadata/",
+            "Tensorflow\\": "package/harranali/tensorflow-serving-php-client/src/PBGenerated/Tensorflow/"
+        }
+    },
     "minimum-stability": "dev",
     "require": {}
 }
