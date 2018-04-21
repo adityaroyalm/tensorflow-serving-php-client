@@ -1,7 +1,10 @@
 {
     "name": "harranali/tensorflow-serving-php-client",
     "type": "library",
-    "license": "MIT",
+    "require": {
+        "google/protobuf": "^3.5",
+        "grpc/grpc": "^1.10.0"
+    },
     "authors": [
         {
             "name": "Harran Modathir",
@@ -15,6 +18,5 @@
             "Tensorflow\\": "package/harranali/tensorflow-serving-php-client/src/PBGenerated/Tensorflow/"
         }
     },
-    "minimum-stability": "dev",
-    "require": {}
+    "license": "MIT"
 }
